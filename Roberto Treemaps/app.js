@@ -1,4 +1,7 @@
-d3.csv('../database/nonvoters_data_clean.csv', function(err, rows){
+d3.csv('../database/nonvoters_data_clean.csv').then(function(rows){
+
+  console.log(rows);
+
   function unpack(rows, key) {
     return rows.map(function(row) { return row[key]});
   }
@@ -10,5 +13,5 @@ d3.csv('../database/nonvoters_data_clean.csv', function(err, rows){
     parents: unpack(rows, 'parents')
   }];
   
-  Plotly.newPlot('myDiv', data);
+  Plotly.newPlot('treemap', data);
 })
